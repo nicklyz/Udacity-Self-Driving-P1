@@ -1,8 +1,6 @@
-#**Finding Lane Lines on the Road** 
+#**Finding Lane Lines on the Road**
 
-##Writeup Template
-
-###You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
+##Writeup
 
 ---
 
@@ -23,11 +21,15 @@ The goals / steps of this project are the following:
 
 ###1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+My pipeline consisted of 6 steps:
+1. convert the images to grayscale;
+2. apply Gaussian smoothing to the grayscale images;
+3. use the Canny edge detection from OpenCV to detect the edges of objects in the images.
+4. apply a four-sided polygon to mask the images so that only the edges on the road remain.
+5. apply Hough Transformation to find lane lines in the image.
+6. add the lane lines back to the original images.
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function by splitting the lines into two subsets, one containing the lines of the left lane and the other containing the lines of the right lane. Then I calculate each subset's average slope and average position. From there I can extrapolate to the top and bottom of the lines.
 
 ![alt text][image1]
 
@@ -35,7 +37,7 @@ If you'd like to include images to show how the pipeline works, here is how to i
 ###2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
+One potential shortcoming is that my draw_lines function does not handle outliers lines very well. For example, in the optional challenge video, my line prediction is greatly affected by the bottom part of the video, which shows edges of the cars. 
 
 Another shortcoming could be ...
 
