@@ -28,12 +28,30 @@ The goals / steps of this project are the following:
 #### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
 My pipeline consisted of 6 steps:
-1. convert the images to grayscale; ![alt text][gray]
-2. apply Gaussian smoothing to the grayscale images; ![alt text][blur_gray]
-3. use the Canny edge detection from OpenCV to detect the edges of objects in the images. ![alt text][edges]
-4. apply a four-sided polygon to mask the images so that only the edges on the road remain. ![alt text][masked_edges]
-5. apply Hough Transformation to find lane lines in the image. ![alt text][lines]
-6. add the lane lines back to the original images. ![alt text][img]
+1. convert the images to grayscale;
+
+![alt text][gray]
+
+2. apply Gaussian smoothing to the grayscale images;
+
+![alt text][blur_gray]
+
+3. use the Canny edge detection from OpenCV to detect the edges of objects in the images.
+
+![alt text][edges]
+
+4. apply a four-sided polygon to mask the images so that only the edges on the road remain.
+
+![alt text][masked_edges]
+
+5. apply Hough Transformation to find lane lines in the image.
+
+![alt text][lines]
+
+6. add the lane lines back to the original images.
+
+![alt text][img]
+
 
 In order to draw a single line on the left and right lanes, I modified the draw_lines() function by splitting the lines into two subsets, one containing the lines of the left lane and the other containing the lines of the right lane. Then I calculate each subset's average slope and average position. From there I can extrapolate to the top and bottom of the lines.
 
